@@ -1,16 +1,18 @@
-# wau_walk
+# Wau Walk - Aplicación de Logística y Gestión de Paseos para Mascotas
 
-Diseño y desarrollo de un aplicativo móvil para la logística y gestión de paseos para mascotas.
+## Descripción
 
-## Getting Started
+Wau Walk es una aplicación móvil desarrollada en Flutter que facilita la logística y gestión de paseos para mascotas. Permite a los usuarios programar y coordinar paseos para sus mascotas de manera eficiente y organizada.
 
-This project is a starting point for a Flutter application.
+## Desarrolladores
 
-A few resources to get you started if this is your first Flutter project:
+- **Yeison Stiven Calderón**
+  GitHub: [sonyei888](https://github.com/sonyei888)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- **Kevin Santiago Suárez Ortega**
+  GitHub: [Kevinsansuor](https://github.com/Kevinsansuor)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Tecnologías Utilizadas
+
+- **Flutter:** Framework para desarrollo de aplicaciones móviles multiplataforma.
+- **Dart:** Lenguaje de programación utilizado para desarrollar la lógica de la aplicación.
