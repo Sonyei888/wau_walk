@@ -20,7 +20,7 @@ class WelcomePage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
-                    'Bienvenido 👋',
+                    'Bienvenid@ 👋',
                     style: TextStyle(
                       color: Color(0xFF011638),
                       fontSize: 22,
