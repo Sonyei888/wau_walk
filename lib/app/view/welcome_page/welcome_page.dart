@@ -15,14 +15,24 @@ class WelcomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            const SizedBox(height: 50.0),
-            Center(
-              child: Image.asset(
-                'assets/welcome1.png',
-                width: 400,
-                height: 400,
+            const Padding(padding: EdgeInsets.all(16.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text(
+                    'Bienvenid@ 👋',
+                    style: TextStyle(
+                      color: Color(0xFF011638),
+                      fontSize: 22,
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w500,
+                      height: 0.05,
+                    ),
+                  ),
+                ],
               ),
             ),
+
             const SizedBox(height: 20.0),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
