@@ -26,27 +26,24 @@ class WelcomePage extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    SubTitle("Bienvenidos 🍆"),
+                    SubTitle("Bienvenidos 👋"),
                   ],
                 ),
               ),
               Padding(
-                padding: EdgeInsets.symmetric(vertical: 0, horizontal: 16),
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    const TitleWau("Wau Walk"),
-                    const SizedBox(width: 20.0),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 30),
-                      child: Image.asset(
-                        'assets/logo_md_wauwalk.png',
-                        width: 60,
-                        height: 60,
-                      ),
-                    ),
-                  ],
-                ),
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const TitleWau("Wau Walk"),
+                      const SizedBox(width: 20.0),
+                        Image.asset(
+                          'assets/logo_md_wauwalk.png',
+                          width: 60,
+                          height: 60,
+                        ),
+                    ],
+                  ),
               ),
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
