@@ -1,23 +1,97 @@
 import 'package:flutter/material.dart';
-import 'package:wau_walk/app/view/components/text_header.dart';
-import 'package:wau_walk/app/view/components/text_sub_header.dart';
+import 'package:wau_walk/app/view/components/title.dart';
+import 'package:wau_walk/app/view/login/login_page.dart';
+import '../components/sub_title.dart';
+import '../register/register_page.dart';
 
 class WelcomePage extends StatelessWidget {
-  const WelcomePage({super.key});
+  const WelcomePage({Key? key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 20.0),
-        color: const Color(0xFFA9DBB8),
-        height: double.infinity,
-        child: const Row(
-          children: [
-            HeaderMediano("Bienvenido 👋")
-          ],
+      body: Center(
+        child: Container(
+          color: const Color(0xFFA9DBB8),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Padding(
+                padding: EdgeInsets.symmetric(vertical: 0, horizontal: 16),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    SubTitle("Bienvenidos 👋"),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const TitleWau("Wau Walk"),
+                      const SizedBox(width: 20.0),
+                        Image.asset(
+                          'assets/logo_md_wauwalk.png',
+                          width: 60,
+                          height: 60,
+                        ),
+                    ],
+                  ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                child: Column(
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => RegisterPage()),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFF011638),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30.0),
+                        ),
+                        padding: const EdgeInsets.symmetric(vertical: 15.0),
+                        minimumSize: const Size(double.infinity, 0),
+                      ),
+                      child: const Text(
+                        'Soy nuevo',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                    const SizedBox(height: 10.0),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => LoginPage()),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30.0),
+                        ),
+                        padding: const EdgeInsets.symmetric(vertical: 15.0),
+                        minimumSize: const Size(double.infinity, 0),
+                      ),
+                      child: const Text(
+                        'Tengo una cuenta',
+                        style: TextStyle(color: Colors.black),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
         ),
+    ),
     );
   }
 }
