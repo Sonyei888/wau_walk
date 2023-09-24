@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../welcome_page/welcome_page.dart';  // Asegúrate de importar WelcomePage correctamente
+import '../welcome_page/welcome_page.dart';// Asegúrate de importar WelcomePage correctamente
 
-class RegisterPage extends StatelessWidget {
+class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,12 +16,12 @@ class RegisterPage extends StatelessWidget {
           },
         ),
         title: const Text(
-          'Registro',
+          'Login',
           style: TextStyle(color: Colors.black),
         ),
       ),
       body: const Center(
-        child: Text('página de registro'),
+        child: Text('página de inicio de sesión'),
       ),
     );
   }

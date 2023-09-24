@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:wau_walk/app/view/login/login_page.dart';
+
+import '../register/register_page.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({super.key});
@@ -41,6 +44,10 @@ class WelcomePage extends StatelessWidget {
                   ElevatedButton(
                     onPressed: () {
                       // Acción para el botón "Soy nuevo"
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => RegisterPage()),
+                      );
                     },
                     style: ElevatedButton.styleFrom(
                       primary:const Color(0xFF011638),
@@ -59,6 +66,10 @@ class WelcomePage extends StatelessWidget {
                   ElevatedButton(
                     onPressed: () {
                       // Acción para el botón "Tengo una cuenta"
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => LoginPage()),
+                      );
                     },
                     style: ElevatedButton.styleFrom(
                       primary: Colors.white, // Color de fondo
