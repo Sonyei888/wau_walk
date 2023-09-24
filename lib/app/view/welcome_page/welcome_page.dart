@@ -12,7 +12,7 @@ class WelcomePage extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Container(
-          color: const Color(0xFFA9DBB8),
+          color: const Color(0xFFD3EFDB),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -26,22 +26,29 @@ class WelcomePage extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
                 child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const TitleWau("Wau Walk"),
-                      const SizedBox(width: 20.0),
                         Image.asset(
-                          'assets/logo_md_wauwalk.png',
-                          width: 60,
-                          height: 60,
+                          'assets/logo_sm_wauwalk.png',
+                          width: 55,
+                          height: 55,
                         ),
                     ],
                   ),
               ),
+              Container(
+                child:
+                Image.asset(
+                  'assets/images/dog_welcome_page.png',
+                  width: 300,
+                  height: 300,
+                ),
+              ),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
                 child: Column(
                   children: [
                     ElevatedButton(
