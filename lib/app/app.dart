@@ -10,12 +10,24 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    const primary = Color(0xFFA9DBB8);
+    const secondary = Color(0xFFE7ECEF);
+    const colorTexto = Color(0xFF011638);
+    const postiveColor = Color(0xFF00798C);
+    const negativeColor = Color(0xFFA30000);
+
     return MaterialApp(
       title: 'Wau Walk',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: secondary),
+        scaffoldBackgroundColor: primary,
+        textTheme: Theme.of(context).textTheme.apply(
+          fontFamily: 'Noto Sans',
+          bodyColor: colorTexto,
+          displayColor: colorTexto,
 
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        ),
         useMaterial3: true,
       ),
       home: const WelcomePage(),

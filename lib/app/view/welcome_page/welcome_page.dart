@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:wau_walk/app/view/components/image.dart';
 import 'package:wau_walk/app/view/components/title.dart';
 import 'package:wau_walk/app/view/login/login_page.dart';
 import '../components/sub_title.dart';
@@ -11,13 +10,9 @@ class WelcomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color(0xFFA9DBB8),
-        title: Container(),
-      ),
       body: Center(
         child: Container(
-          color: const Color(0xFFA9DBB8),
+          color: const Color(0xFFD3EFDB),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -31,22 +26,29 @@ class WelcomePage extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
                 child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const TitleWau("Wau Walk"),
-                      const SizedBox(width: 20.0),
                         Image.asset(
-                          'assets/logo_md_wauwalk.png',
-                          width: 60,
-                          height: 60,
+                          'assets/logo_sm_wauwalk.png',
+                          width: 55,
+                          height: 55,
                         ),
                     ],
                   ),
               ),
+              Container(
+                child:
+                Image.asset(
+                  'assetsgit add/dog_welcome_page.png',
+                  width: 300,
+                  height: 300,
+                ),
+              ),
               Padding(
-                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
                 child: Column(
                   children: [
                     ElevatedButton(
@@ -57,7 +59,7 @@ class WelcomePage extends StatelessWidget {
                         );
                       },
                       style: ElevatedButton.styleFrom(
-                        primary: const Color(0xFF011638),
+                        backgroundColor: const Color(0xFF011638),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30.0),
                         ),
@@ -78,7 +80,7 @@ class WelcomePage extends StatelessWidget {
                         );
                       },
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.white,
+                        backgroundColor: Colors.white,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30.0),
                         ),
@@ -96,7 +98,7 @@ class WelcomePage extends StatelessWidget {
             ],
           ),
         ),
-      ),
+    ),
     );
   }
 }

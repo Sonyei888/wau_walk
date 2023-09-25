@@ -9,10 +9,11 @@ class SubTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: Theme.of(context).textTheme.bodyText2!.copyWith(
+      style: Theme.of(context).textTheme.headlineMedium!.copyWith(
         fontFamily: 'Poppins',
-        fontSize: 20,
-        fontWeight: FontWeight.w600,
+        fontSize: 22,
+        height: 0.02,
+        fontWeight: FontWeight.w400,
       ),
     );
   }
