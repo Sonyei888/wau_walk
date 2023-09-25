@@ -42,7 +42,7 @@ class WelcomePage extends StatelessWidget {
               Container(
                 child:
                 Image.asset(
-                  'assets/images/dog_welcome_page.png',
+                  'assetsgit add/dog_welcome_page.png',
                   width: 300,
                   height: 300,
                 ),
