@@ -124,7 +124,7 @@ class _LoginPageState extends State<LoginPage> {
                         onPrimary: Colors.black,
                       ),
                       onPressed: () {
-                        // Handle login button press
+                        // boton de iniciar sesion
                       },
                       child: const Text('Iniciar sesión'),
                     ),
