@@ -5,16 +5,13 @@ import 'package:wau_walk/app/view/splash/splash_page.dart';
 import 'package:wau_walk/app/view/welcome_page/welcome_page.dart';
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     const primary = Color(0xFFA9DBB8);
     const secondary = Color(0xFFE7ECEF);
     const colorTexto = Color(0xFF011638);
-    const postiveColor = Color(0xFF00798C);
-    const negativeColor = Color(0xFFA30000);
 
     return MaterialApp(
       title: 'Wau Walk',
@@ -26,11 +23,12 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Noto Sans',
           bodyColor: colorTexto,
           displayColor: colorTexto,
-
         ),
         useMaterial3: true,
       ),
-      home: const WelcomePage(),
+      home: SplashPage(), // Cambia esta línea a SplashPage
     );
   }
 }
+
+
