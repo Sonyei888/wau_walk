@@ -1,7 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:wau_walk/app/view/register/upload_photo.dart';
+import 'package:image_picker/image_picker.dart';
 
-class RegisterPage extends StatelessWidget {
+class UploadPhotoPage extends StatelessWidget {
+  const UploadPhotoPage({Key? key}) : super(key: key);
+
+  Future<void> _pickImage() async {
+    final ImagePicker _picker = ImagePicker();
+    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+
+    if (image != null) {
+      // Aquí puedes realizar acciones con la imagen seleccionada, como subirla a un servidor o mostrarla en la pantalla.
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,13 +35,12 @@ class RegisterPage extends StatelessWidget {
                       Icon(Icons.arrow_back, color: Colors.black),
                       SizedBox(width: 16.0),
                       Text(
-                        'Registro usuario',
+                        'Subir foto',
                         style: TextStyle(fontSize: 20.0),
                       ),
                     ],
                   ),
                 ),
-
               ],
             ),
             const SizedBox(height: 20.0),
@@ -46,11 +56,11 @@ class RegisterPage extends StatelessWidget {
             ),
             const SizedBox(height: 16.0),
             const Text(
-              'Conozcámonos un poco',
+              'Este será el perfil que usaras',
               style: TextStyle(fontSize: 20.0),
             ),
             const SizedBox(height: 8.0),
-            const Text('Danos un perfil con el que te podamos reconocer'),
+            const Text('Puedes cambiarlo en cualquier momento que desees'),
             const SizedBox(height: 80.0), // Aumentado el margen inferior del texto
             const Center(
               child: CircleAvatar(
@@ -75,53 +85,29 @@ class RegisterPage extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(height: 40.0),
-            Column(
-              children: [
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    primary: Color(0xFFE7ECEF),
-                    side: BorderSide(color: Color(0xFF011638)),
-                  ),
-                  onPressed: () {
-                    // Acción al hacer clic en "Tomar foto"
-                  },
-                  child: const Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(Icons.camera_alt_outlined, size: 24.0),
-                      SizedBox(width: 8.0),
-                      Text('Tomar foto'),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 8.0),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    primary: const Color(0xFFE7ECEF),
-                    side: const BorderSide(color: Color(0xFF011638)),
-                  ),
-                  onPressed: () {
-                    // Acción al hacer clic en "Subir foto"
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const UploadPhotoPage()),
-                    );
-                  },
-                  child: const Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(Icons.image, size: 24.0),
-                      SizedBox(width: 8.0),
-                      Text('Subir foto'),
-                    ],
-                  ),
-                ),
-              ],
+            const SizedBox(height: 80.0),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: Color(0xFFE7ECEF),
+                side: BorderSide(color: Color(0xFF011638)),
+              ),
+              onPressed: _pickImage,
+              child: const Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.camera_alt_outlined, size: 24.0),
+                  SizedBox(width: 8.0),
+                  Text('Elegir Foto'),
+                ],
+              ),
             ),
           ],
         ),
       ),
     );
   }
+}
+
+void main() {
+  runApp(const MaterialApp(home: UploadPhotoPage()));
 }
