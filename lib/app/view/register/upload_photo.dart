@@ -1,15 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'dart:io';
 
-class UploadPhotoPage extends StatelessWidget {
+class UploadPhotoPage extends StatefulWidget {
   const UploadPhotoPage({Key? key}) : super(key: key);
+
+  @override
+  _UploadPhotoPageState createState() => _UploadPhotoPageState();
+}
+
+class _UploadPhotoPageState extends State<UploadPhotoPage> {
+  String? _imagePath; // Ruta de la imagen seleccionada
 
   Future<void> _pickImage() async {
     final ImagePicker _picker = ImagePicker();
     final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
 
     if (image != null) {
-      // Aquí puedes realizar acciones con la imagen seleccionada, como subirla a un servidor o mostrarla en la pantalla.
+      setState(() {
+        _imagePath = image.path; // Actualiza la ruta de la imagen seleccionada
+      });
     }
   }
 
@@ -62,13 +72,13 @@ class UploadPhotoPage extends StatelessWidget {
             const SizedBox(height: 8.0),
             const Text('Puedes cambiarlo en cualquier momento que desees'),
             const SizedBox(height: 80.0), // Aumentado el margen inferior del texto
-            const Center(
+            Center(
               child: CircleAvatar(
-                radius: 80.0,
-                backgroundImage: AssetImage('assets/foto_muestra.jpg'),
+                radius: 100.0,
+                backgroundImage: _imagePath != null ? FileImage(File(_imagePath!)) : AssetImage('assets/foto_muestra.jpg') as ImageProvider<Object>,
               ),
             ),
-            const SizedBox(height: 80.0), // Añadido margen inferior de la imagen
+            const SizedBox(height: 60.0), // Añadido margen inferior de la imagen
             Container(
               padding: const EdgeInsets.all(16.0),
               color: const Color(0xFF011638),
@@ -85,7 +95,7 @@ class UploadPhotoPage extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(height: 80.0),
+            const SizedBox(height: 40.0),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 primary: Color(0xFFE7ECEF),
@@ -98,6 +108,23 @@ class UploadPhotoPage extends StatelessWidget {
                   Icon(Icons.camera_alt_outlined, size: 24.0),
                   SizedBox(width: 8.0),
                   Text('Elegir Foto'),
+                ],
+              ),
+            ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: const Color(0xFFE7ECEF),
+                side: const BorderSide(color: Color(0xFF011638)),
+              ),
+              onPressed: () {
+                // Acción al hacer clic en "Tomar foto"
+              },
+              child: const Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.keyboard_arrow_right_outlined, size: 24.0),
+                  SizedBox(width: 8.0),
+                  Text('Continuar'),
                 ],
               ),
             ),
