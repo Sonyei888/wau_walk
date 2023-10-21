@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wau_walk/app/view/register/take_photo_user_page.dart';
 import 'package:wau_walk/app/view/register/upload_photo.dart';
 
 class RegisterPage extends StatelessWidget {
@@ -84,7 +85,11 @@ class RegisterPage extends StatelessWidget {
                     side: BorderSide(color: Color(0xFF011638)),
                   ),
                   onPressed: () {
-                    // Acción al hacer clic en "Tomar foto"
+                    // Acción al hacer clic en "Subir foto"
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const TakePhotoUserPage()),
+                    );
                   },
                   child: const Row(
                     mainAxisAlignment: MainAxisAlignment.center,

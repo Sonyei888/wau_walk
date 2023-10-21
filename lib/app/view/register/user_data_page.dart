@@ -10,10 +10,10 @@ class _UserDataPageState extends State<UserDataPage> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController lastNameController = TextEditingController();
   final TextEditingController idController = TextEditingController();
-  final TextEditingController cityController = TextEditingController();
   final TextEditingController birthDateController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  String selectedCity = 'Bucaramanga';
   bool showPassword = false;
   bool isKeyboardOpen = false;
 
@@ -27,6 +27,16 @@ class _UserDataPageState extends State<UserDataPage> {
         isKeyboardOpen = data.viewInsets.bottom > 0;
       });
     });
+  }
+
+  bool isOver18(DateTime selectedDate) {
+    final now = DateTime.now();
+    var age = now.year - selectedDate.year;
+    if (now.month < selectedDate.month ||
+        (now.month == selectedDate.month && now.day < selectedDate.day)) {
+      age--;
+    }
+    return age >= 18;
   }
 
   @override
@@ -80,7 +90,7 @@ class _UserDataPageState extends State<UserDataPage> {
                 child: const SizedBox(height: 8.0),
               ),
               const Text('Ingresa algunos de tus datos personales'),
-              const SizedBox(height: 20.0), // Añadido espacio entre textos e inputs
+              const SizedBox(height: 20.0),
               Column(
                 children: [
                   TextFormField(
@@ -108,28 +118,43 @@ class _UserDataPageState extends State<UserDataPage> {
                     ),
                   ),
                   const SizedBox(height: 12.0),
-                  TextFormField(
-                    controller: cityController,
+                  DropdownButtonFormField<String>(
+                    value: selectedCity,
+                    items: ['Bucaramanga', 'Medellín', 'Bogotá']
+                        .map<DropdownMenuItem<String>>(
+                            (String value) => DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        ))
+                        .toList(),
+                    onChanged: (String? value) {
+                      setState(() {
+                        selectedCity = value!;
+                      });
+                    },
                     decoration: const InputDecoration(
                       labelText: 'Ciudad de residencia',
                       border: OutlineInputBorder(),
                     ),
-                    validator: (value) {
-                      if (value != 'Bucaramanga' &&
-                          value != 'Bogotá' &&
-                          value != 'Medellín') {
-                        return 'Ciudad no válida';
-                      }
-                      return null;
-                    },
                   ),
                   const SizedBox(height: 12.0),
                   TextFormField(
                     controller: birthDateController,
+                    keyboardType: TextInputType.datetime,
                     decoration: const InputDecoration(
-                      labelText: 'Fecha de nacimiento',
+                      labelText: 'Fecha de nacimiento (yyyy-mm-dd)',
                       border: OutlineInputBorder(),
                     ),
+                    validator: (value) {
+                      DateTime? selectedDate = DateTime.tryParse(value!);
+                      if (selectedDate == null) {
+                        return 'Fecha no válida';
+                      }
+                      if (!isOver18(selectedDate)) {
+                        return 'Debes ser mayor de 18 años';
+                      }
+                      return null;
+                    },
                   ),
                   const SizedBox(height: 12.0),
                   TextFormField(
