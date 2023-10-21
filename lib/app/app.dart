@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:wau_walk/app/view/home/home_page.dart';
 import 'package:wau_walk/app/view/splash/splash_page.dart';
 import 'package:wau_walk/app/view/welcome_page/welcome_page.dart';
@@ -12,6 +12,12 @@ class MyApp extends StatelessWidget {
     const primary = Color(0xFFA9DBB8);
     const secondary = Color(0xFFE7ECEF);
     const colorTexto = Color(0xFF011638);
+
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
+
 
     return MaterialApp(
       title: 'Wau Walk',
