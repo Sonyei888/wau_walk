@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "98020907656",
-    "project_id": "wauwalk-f5ea8",
-    "storage_bucket": "wauwalk-f5ea8.appspot.com"
+    "project_number": "905378120570",
+    "project_id": "wau-walk",
+    "storage_bucket": "wau-walk.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:98020907656:android:145fb60a12dd25189b9d3d",
+        "mobilesdk_app_id": "1:905378120570:android:35bc031d9ef6bd75838cc3",
         "android_client_info": {
           "package_name": "com.ykaws.wau_walk"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDK5nAUqsbjgAEoxOdSTnErh8WX3owfrA0"
+          "current_key": "AIzaSyDzYczl18GNt6jtPRp4TrrI7hnuCbiS3qI"
         }
       ],
       "services": {

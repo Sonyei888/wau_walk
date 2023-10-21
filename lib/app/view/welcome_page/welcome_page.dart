@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wau_walk/app/view/components/title.dart';
 import 'package:wau_walk/app/view/login/login_page.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import '../components/sub_title.dart';
 import '../register/register_page.dart';
 
