@@ -1,31 +1,71 @@
 import 'package:flutter/material.dart';
+import 'package:wau_walk/app/view/user_page/initial_user_page.dart';
+import 'package:wau_walk/app/view/welcome_page/welcome_page.dart';
 
 class LoginPage extends StatefulWidget {
-
   @override
   _LoginPageState createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
-
   bool _isChecked = false;
+  final TextEditingController _userController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  void _login() {
+    final String username = _userController.text;
+    final String password = _passwordController.text;
+
+    if (username == "yeison@yk.com" && password == "Yk123") {
+      // Credenciales válidas, navega a la página "InitialUserPage"
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => InitialUserPage(),
+        ),
+      );
+    } else {
+      // Credenciales incorrectas, muestra una advertencia
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text("Credenciales incorrectas"),
+            content: Text("Por favor, verifica tu usuario y contraseña."),
+            actions: [
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text("Aceptar"),
+              ),
+            ],
+          );
+        },
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           color: Colors.black,
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => WelcomePage(),
+              ),
+            );
           },
         ),
         title: const Text(''),
       ),
-      backgroundColor: Colors.white,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -68,11 +108,15 @@ class _LoginPageState extends State<LoginPage> {
           Padding(
             padding: const EdgeInsets.all(20.0),
             child: Container(
-              color: const Color(0xFFE7ECEF),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(50.0),
+                color: const Color(0xFFE7ECEF),
+              ),
               padding: const EdgeInsets.all(20.0),
               child: Column(
                 children: [
                   TextField(
+                    controller: _userController,
                     decoration: InputDecoration(
                       hintText: 'Usuario',
                       filled: true,
@@ -84,6 +128,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   const SizedBox(height: 10.0),
                   TextField(
+                    controller: _passwordController,
                     obscureText: true,
                     decoration: InputDecoration(
                       hintText: 'Contraseña',
@@ -111,7 +156,7 @@ class _LoginPageState extends State<LoginPage> {
                             });
                           },
                         ),
-                        const Text('Recorder mi usuario y contraseña'),
+                        const Text('Recordar mi usuario y contraseña'),
                       ],
                     ),
                   ),
@@ -123,9 +168,7 @@ class _LoginPageState extends State<LoginPage> {
                         primary: Colors.white,
                         onPrimary: Colors.black,
                       ),
-                      onPressed: () {
-                        // boton de iniciar sesion
-                      },
+                      onPressed: _login, // Llama a la función _login
                       child: const Text('Iniciar sesión'),
                     ),
                   ),

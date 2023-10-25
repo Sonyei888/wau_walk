@@ -167,6 +167,7 @@ class _UserDataPageState extends State<UserDataPage> {
                     },
                   ),
                   const SizedBox(height: 12.0),
+
                   TextFormField(
                     controller: emailController,
                     keyboardType: TextInputType.emailAddress,

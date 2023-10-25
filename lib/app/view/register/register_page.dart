@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:wau_walk/app/view/register/take_photo_user_page.dart';
+import 'package:wau_walk/app/view/welcome_page/welcome_page.dart';
 
 class RegisterPage extends StatelessWidget {
   @override
@@ -18,7 +19,12 @@ class RegisterPage extends StatelessWidget {
                 InkWell(
                   onTap: () {
                     // Navegar de regreso a WelcomePage al hacer clic en la flecha
-                    Navigator.pop(context);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => WelcomePage(),
+                      ),
+                    );
                   },
                   child: const Row(
                     children: [
