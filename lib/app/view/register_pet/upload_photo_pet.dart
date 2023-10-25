@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:provider/provider.dart';
 import 'package:wau_walk/app/model/image_provider_model.dart';
 import 'package:wau_walk/app/view/register/user_data_page.dart';
+import 'package:wau_walk/app/view/register_pet/pet_data_page.dart';
 
 class UploadPhotoPetPage extends StatefulWidget {
   const UploadPhotoPetPage({Key? key}) : super(key: key);
@@ -160,7 +161,7 @@ class _UploadPhotoPetPageState extends State<UploadPhotoPetPage> {
             // Acción al hacer clic en "continuar"
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => UserDataPage()),
+              MaterialPageRoute(builder: (context) => PetDataPage()),
             );
           },
           child: const Row(

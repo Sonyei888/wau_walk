@@ -208,7 +208,7 @@ class _UserDataPageState extends State<UserDataPage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => PetDataPage(),
+                            builder: (context) => UploadPhotoPetPage(),
                           ),
                         );
                       } else {
