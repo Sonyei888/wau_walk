@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:wau_walk/app/view/register/upload_photo.dart';
+import 'package:wau_walk/app/view/register_pet/pet_data_page.dart';
+import 'package:wau_walk/app/view/register_pet/upload_photo_pet.dart';
 
 class UserDataPage extends StatefulWidget {
   @override
@@ -37,6 +38,15 @@ class _UserDataPageState extends State<UserDataPage> {
       age--;
     }
     return age >= 18;
+  }
+
+  bool areAllFieldsFilled() {
+    return nameController.text.isNotEmpty &&
+        lastNameController.text.isNotEmpty &&
+        idController.text.isNotEmpty &&
+        birthDateController.text.isNotEmpty &&
+        emailController.text.isNotEmpty &&
+        passwordController.text.isNotEmpty;
   }
 
   @override
@@ -193,13 +203,19 @@ class _UserDataPageState extends State<UserDataPage> {
                       side: const BorderSide(color: Color(0xFF011638)),
                     ),
                     onPressed: () {
-                      // Acción al hacer clic en "Siguiente paso"
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const UploadPhotoPage(),
-                        ),
-                      );
+                      if (areAllFieldsFilled()) {
+                        // Acción al hacer clic en "Siguiente paso" si todos los campos están llenos
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => UploadPhotoPetPage(),
+                          ),
+                        );
+                      } else {
+                        // Mostrar un mensaje de error o requerimiento adicional
+                        // (puede ser un diálogo emergente o una notificación)
+                        // para informar al usuario que todos los campos deben estar llenos.
+                      }
                     },
                     child: const Padding(
                       padding: EdgeInsets.all(12.0),

@@ -12,7 +12,6 @@ class WelcomePage extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Container(
-          color: const Color(0xFFD3EFDB),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

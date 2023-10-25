@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:wau_walk/app/view/register/take_photo_user_page.dart';
-import 'package:wau_walk/app/view/register/upload_photo.dart';
 
 class RegisterPage extends StatelessWidget {
   @override
@@ -84,13 +84,19 @@ class RegisterPage extends StatelessWidget {
                     primary: Color(0xFFE7ECEF),
                     side: BorderSide(color: Color(0xFF011638)),
                   ),
-                  onPressed: () {
-                    // Acción al hacer clic en "Subir foto"
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const TakePhotoUserPage()),
-                    );
+                  onPressed: () async {
+                    // Tomar foto con la cámara
+                    final XFile? photo = await takePhotoWithCamera();
+                    if (photo != null) {
+                      // Navegar a la página TakePhotoUserPage con la foto tomada
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => TakePhotoUserPage(photo: photo)),
+                      );
+                    }
                   },
+
+
                   child: const Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -100,25 +106,28 @@ class RegisterPage extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(height: 8.0),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     primary: const Color(0xFFE7ECEF),
                     side: const BorderSide(color: Color(0xFF011638)),
                   ),
-                  onPressed: () {
-                    // Acción al hacer clic en "Subir foto"
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const UploadPhotoPage()),
-                    );
+                  onPressed: () async {
+                    // Elegir foto de la galería
+                    final XFile? photo = await pickImageFromGallery();
+                    if (photo != null) {
+                      // Navegar a la página TakePhotoUserPage con la foto elegida
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => TakePhotoUserPage(photo: photo)),
+                      );
+                    }
                   },
                   child: const Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Icon(Icons.image, size: 24.0),
                       SizedBox(width: 8.0),
-                      Text('Subir foto'),
+                      Text('Elegir foto'),
                     ],
                   ),
                 ),
@@ -128,5 +137,19 @@ class RegisterPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  // Función para tomar una foto con la cámara
+  Future<XFile?> takePhotoWithCamera() async {
+    final ImagePicker _picker = ImagePicker();
+    final XFile? photo = await _picker.pickImage(source: ImageSource.camera);
+    return photo;
+  }
+
+  // Función para elegir una foto de la galería
+  Future<XFile?> pickImageFromGallery() async {
+    final ImagePicker _picker = ImagePicker();
+    final XFile? photo = await _picker.pickImage(source: ImageSource.gallery);
+    return photo;
   }
 }

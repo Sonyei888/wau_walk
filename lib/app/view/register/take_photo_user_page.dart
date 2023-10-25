@@ -3,10 +3,13 @@ import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'package:provider/provider.dart';
 import 'package:wau_walk/app/model/image_provider_model.dart';
+import 'package:wau_walk/app/view/register/register_page.dart';
 import 'package:wau_walk/app/view/register/user_data_page.dart';
 
 class TakePhotoUserPage extends StatefulWidget {
-  const TakePhotoUserPage({Key? key}) : super(key: key);
+  final XFile? photo;
+  final String? imagePath;
+  const TakePhotoUserPage({Key? key, this.imagePath, this.photo}) : super(key: key);
 
   @override
   _TakePhotoUserPageState createState() => _TakePhotoUserPageState();
@@ -103,8 +106,8 @@ class _TakePhotoUserPageState extends State<TakePhotoUserPage> {
             builder: (context, imageProvider, child) {
               return CircleAvatar(
                 radius: 100.0,
-                backgroundImage: imageProvider.imagePath != null
-                    ? FileImage(File(imageProvider.imagePath!))
+                backgroundImage: widget.photo != null
+                    ? FileImage(File(widget.photo!.path))
                     : const AssetImage('assets/foto_muestra.jpg') as ImageProvider,
               );
             },
@@ -143,13 +146,19 @@ class _TakePhotoUserPageState extends State<TakePhotoUserPage> {
             primary: Color(0xFFE7ECEF),
             side: BorderSide(color: Color(0xFF011638)),
           ),
-          onPressed: _pickImage,
+          onPressed: () {
+            // Acción al hacer clic en "continuar"
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => RegisterPage()),
+            );
+          },
           child: const Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(Icons.camera_alt_outlined, size: 24.0),
+              Icon(Icons.keyboard_arrow_left_outlined, size: 24.0),
               SizedBox(width: 8.0),
-              Text('Tomar Foto'),
+              Text('Elegir otra imagen'),
             ],
           ),
         ),
@@ -170,7 +179,7 @@ class _TakePhotoUserPageState extends State<TakePhotoUserPage> {
             children: [
               Icon(Icons.keyboard_arrow_right_outlined, size: 24.0),
               SizedBox(width: 8.0),
-              Text('Continuar'),
+              Text('Usar esta imagen'),
             ],
           ),
         ),

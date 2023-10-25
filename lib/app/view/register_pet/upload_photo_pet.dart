@@ -4,15 +4,16 @@ import 'dart:io';
 import 'package:provider/provider.dart';
 import 'package:wau_walk/app/model/image_provider_model.dart';
 import 'package:wau_walk/app/view/register/user_data_page.dart';
+import 'package:wau_walk/app/view/register_pet/pet_data_page.dart';
 
-class UploadPhotoPage extends StatefulWidget {
-  const UploadPhotoPage({Key? key}) : super(key: key);
+class UploadPhotoPetPage extends StatefulWidget {
+  const UploadPhotoPetPage({Key? key}) : super(key: key);
 
   @override
-  _UploadPhotoPageState createState() => _UploadPhotoPageState();
+  _UploadPhotoPetPageState createState() => _UploadPhotoPetPageState();
 }
 
-class _UploadPhotoPageState extends State<UploadPhotoPage> {
+class _UploadPhotoPetPageState extends State<UploadPhotoPetPage> {
   final ImageProviderModel _imageProvider = ImageProviderModel();
 
   Future<void> _pickImage() async {
@@ -66,7 +67,7 @@ class _UploadPhotoPageState extends State<UploadPhotoPage> {
               Icon(Icons.arrow_back, color: Colors.black),
               SizedBox(width: 16.0),
               Text(
-                'Subir foto',
+                'Registro mascota',
                 style: TextStyle(fontSize: 20.0),
               ),
             ],
@@ -92,12 +93,10 @@ class _UploadPhotoPageState extends State<UploadPhotoPage> {
         ),
         const SizedBox(height: 16.0),
         const Text(
-          'Este será el perfil que usarás',
+          'Este será el perfil que usará tu mascota',
           style: TextStyle(fontSize: 20.0),
         ),
-        const SizedBox(height: 8.0),
-        const Text('Puedes cambiarlo en cualquier momento que desees'),
-        const SizedBox(height: 80.0),
+        const SizedBox(height: 50.0),
         Center(
           child: Consumer<ImageProviderModel>(
             builder: (context, imageProvider, child) {
@@ -105,7 +104,7 @@ class _UploadPhotoPageState extends State<UploadPhotoPage> {
                 radius: 100.0,
                 backgroundImage: imageProvider.imagePath != null
                     ? FileImage(File(imageProvider.imagePath!))
-                    : const AssetImage('assets/foto_muestra.jpg') as ImageProvider,
+                    : const AssetImage('assets/photo_pets.png') as ImageProvider,
               );
             },
           ),
@@ -125,7 +124,7 @@ class _UploadPhotoPageState extends State<UploadPhotoPage> {
           SizedBox(width: 8.0),
           Expanded(
             child: Text(
-              'Toma la foto como se muestra en el ejemplo',
+              'Elige la foto como se muestra en el ejemplo',
               style: TextStyle(color: Colors.white),
             ),
           ),
@@ -162,7 +161,7 @@ class _UploadPhotoPageState extends State<UploadPhotoPage> {
             // Acción al hacer clic en "continuar"
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => UserDataPage()),
+              MaterialPageRoute(builder: (context) => PetDataPage()),
             );
           },
           child: const Row(
@@ -180,5 +179,5 @@ class _UploadPhotoPageState extends State<UploadPhotoPage> {
 }
 
 void main() {
-  runApp(const MaterialApp(home: UploadPhotoPage()));
+  runApp(const MaterialApp(home: UploadPhotoPetPage()));
 }

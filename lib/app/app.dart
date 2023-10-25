@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:wau_walk/app/view/home/home_page.dart';
+import 'package:wau_walk/app/view/register_pet/pet_data_page.dart';
 import 'package:wau_walk/app/view/splash/splash_page.dart';
+import 'package:wau_walk/app/view/testing/testing_page.dart';
 import 'package:wau_walk/app/view/welcome_page/welcome_page.dart';
 
 class MyApp extends StatelessWidget {
